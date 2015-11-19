@@ -38,3 +38,7 @@
 046674 Tharsis Tuani Pinto Souza                37  EM       B
 046718 Thiago Henrique Parra                    35  EC       B
 046961 Vitor Paulo Villarino Pinto              34  CC       B
+000001 Gabr                                     13  PT       A
+000002 Raf                                      45  PS       B
+000003 Thales Cricket                           11  EC       A
+000002 Ou Camilo ou Dorea                       25  EC       A

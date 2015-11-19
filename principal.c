@@ -3,7 +3,7 @@
 
 #include "include/fun_listas.h"
 
-#define LISTA			"data/lista1.txt"
+#define LISTA			"data/lista.txt"
 
 
 #define PRIMARIO 		"data/indicelista.bt"
@@ -27,6 +27,8 @@ int op=0;;
 	list=fopen(LISTA,"r+");
 	prim=fopen(PRIMARIO,"r+");
 	
+
+
 	// AQUI VAMOS CALCULAR OS INDICES PRIMARIOS. Usando ARVORES-B?
 	//terminal_saida(prim,&reg);----> funcao de indices primarios.
 
@@ -84,6 +86,7 @@ int op=0;;
 			//system("pause");
 			
 			rewind(list);
+			printf("Fim da insercao\n");
 		}
 
 		else if((op==2))
@@ -102,7 +105,7 @@ int op=0;;
 		reg_buildall(list, &reg);
 		rewind(list);
 			
-		gera_primario(prim,&reg);    //  <-------------Agora gera_primario organiza os indices por arvores-b, essa funcao se chamara terminal_saida(prim, &reg);
+		//gera_primario(prim,&reg);    //  <-------------Agora gera_primario organiza os indices por arvores-b, essa funcao se chamara terminal_saida(prim, &reg);
 		rewind(list);
 
 		free(in);

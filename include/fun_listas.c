@@ -71,6 +71,9 @@ int linetotal(FILE* stream){
 // ------------------------------------------------------------------------------------------------
 
 int reg_build(char* stream, registro** output){
+
+	
+	printf("Registro: %s\n", stream );
 	int counter = 0;
 	char* field;
 	char op[3];
@@ -117,6 +120,7 @@ int reg_build(char* stream, registro** output){
 		field = strtok(NULL, " ");
 			aux->turma = field[0];
 				//fills out turma field
+		
 	}
 
 	(*output) = aux;
@@ -126,7 +130,8 @@ int reg_build(char* stream, registro** output){
 // ------------------------------------------------------------------------------------------------
 
 int reg_buildall(FILE* stream, registro** output){
-		
+	
+	
 	char source_string[120];
 	registro* reg, *aux1, *aux2;
 	int root =0;
@@ -153,6 +158,7 @@ int reg_buildall(FILE* stream, registro** output){
 			}
 		}
 	}
+	
 	return FUNCTION_OK;
 }
 
@@ -203,7 +209,7 @@ int gera_primario(FILE* output, registro** reg){
 
 // ------------------------------------------------------------------------------------------------
 
-	int reg_seek(FILE* stream, int target, registro** output){
+int reg_seek(FILE* stream, int target, registro** output){
 
 		char source_string[120];
 		int counter = 0;
@@ -276,7 +282,7 @@ int seek_primario(char* chave , FILE* input){
 	}
 
 // ------------------------------------------------------------------------------------------------
-
+/*
 int gera_secundario(FILE* output, registro** reg){
 	registro *p;
 	i_secundario *ind, *first;
@@ -356,7 +362,7 @@ int gera_secundario(FILE* output, registro** reg){
 
 	return FUNCTION_OK;
 }
-
+*/
 // ------------------------------------------------------------------------------------------------
 
 int reg_push( registro* reg, FILE* source ){
@@ -376,6 +382,6 @@ int reg_push( registro* reg, FILE* source ){
 	fprintf(source, "%s       ", reg->curso);
 	fprintf(source, "%c\n", reg->turma);
 	rewind(source);
-
+	
 	return FUNCTION_OK;
 }
