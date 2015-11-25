@@ -5,7 +5,6 @@
 
 #define LISTA			"data/lista.txt"
 
-
 #define PRIMARIO 		"data/indicelista.bt"
 
 
@@ -36,10 +35,6 @@ int op=0;;
 
 		printf("-----MENU-----\n1 - Add Register\n2 - Search Register\n(-1) - Exit\n");
 		scanf("%d", &op);
-
-		if(op>3 || op<0){
-			
-		}
 
 
 		if((op==1)){
