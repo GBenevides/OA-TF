@@ -8,6 +8,8 @@ typedef int dado;
 #define KEYSIZE1	50
 
 
+// Tá!! Tá la dentro! Magrão é melhor que shevchenko!!
+
 typedef struct indice_primario{
 
 	int key; // Mudei para int para fins de teste.
