@@ -210,6 +210,25 @@ int gera_primario(FILE* output, registro** reg){
 	return FUNCTION_OK;
 }
 
+int prim_build(FILE* ptr, registro*reg, i_primario** out){
+
+			int caux;
+			rewind(ptr);
+			int lines=linetotal(ptr);
+			char chave[16];
+			strcpy(chave,reg->matric);
+
+			for (caux = 0; caux < 9; caux++)
+				chave[caux+6] = reg->nome[caux];
+			chave[15] = '\0';
+			//strcat(chave,p->nome);
+			//strcat(chave,'\0');
+			strcpy((*out)->key, chave);
+			(*out)->line=lines+1;
+			printf("%s %d\n", (*out)->key, (*out)->line);
+			return FUNCTION_OK;
+}
+
 // ------------------------------------------------------------------------------------------------
 
 int reg_seek(FILE* stream, int target, registro** output){

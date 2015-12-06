@@ -38,5 +38,6 @@
 046674 Tharsis Tuani Pinto Souza                37  EM       B
 046718 Thiago Henrique Parra                    35  EC       B
 046961 Vitor Paulo Villarino Pinto              34  CC       B
-123456 Tolhete Molhado                          13  PE       A
-147874 Tom Hanks                                45  AS       A
+123456 Roger Flores                             10  WE       A
+174965 Jair Bolsonaro                           24  PT       B
+456123 Mut Reta                                 12  WZ       A

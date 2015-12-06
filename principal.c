@@ -19,8 +19,10 @@ int main(int argc, char const *argv[]){
 	int op=0;;
 
 	FILE *prim, *list, *saida;
-	
+
 	registro *reg, *in;
+	i_primario* test_index= (i_primario*) malloc(sizeof(i_primario));
+
 	in = (registro*)malloc(sizeof(registro));
 
 	int oparq;
@@ -90,10 +92,12 @@ int main(int argc, char const *argv[]){
 			reg_push(in, list);
 			//fclose(arq);
 			//system("pause");
-			
+			prim_build(list,in,&test_index);
+			expose(test_index);
 			rewind(list);
-			i_create(&test_index, stream, counter + 1);
-			insert(tree, test_index);
+			system("pause");
+			//i_create(&test_index, stream, counter + 1);
+			insert(&tree, test_index);
 
 			printf("Fim da insercao\n");
 		}
@@ -122,7 +126,7 @@ int main(int argc, char const *argv[]){
 	
 			}
 
-
+	free(test_index);
 	free(in);
 	fclose(prim);
 	fclose(list);
