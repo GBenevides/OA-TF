@@ -297,11 +297,11 @@ int reg_push( registro* reg, FILE* source ){
 
 	}while(!feof(source));
 
-	fprintf(source, "%s ", reg->matric);
+	fprintf(source, "\n%s ", reg->matric);
 	fprintf(source, "%s", reg->nome);
 	fprintf(source, "%d  ", reg->op);
 	fprintf(source, "%s       ", reg->curso);
-	fprintf(source, "%c\n", reg->turma);
+	fprintf(source, "%c", reg->turma);
 	rewind(source);
 	
 	return FUNCTION_OK;

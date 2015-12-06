@@ -158,7 +158,7 @@ int insert_nonfull(b_tree** root, i_primario* k){
 
 	}else{
 
-		printf("not leaf => i_counter: %d // ", (*root)->i_counter);
+		//printf("not leaf => i_counter: %d // ", (*root)->i_counter);
 			
 
 		for(i = (*root)->i_counter - 1; i >= 0; i--){
