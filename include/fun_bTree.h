@@ -28,3 +28,5 @@ int tree_burn(b_tree** );
 int btree_create(b_tree ** );
 
 int tree_run_space(b_tree* , int );
+
+int build_tree(FILE* , b_tree** );

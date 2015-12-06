@@ -101,7 +101,7 @@ int insert (b_tree** root ,  i_primario* element){	//k is the insertion_key
 	int j;
 	b_tree* aux = (*root);
 
-
+	
 	if(aux->i_counter == (ORDEM-1)){
 		// NÓ ESTÁ CHEIO
 
@@ -420,3 +420,43 @@ int tree_run_space(b_tree* target, int offset){
 	tree_run_space(target->branches[ORDEM - 1], offset+1);
 	
 }
+
+int build_tree(FILE* database, b_tree** tree){
+
+	char* stream;
+	size_t nBytes=120;
+	i_primario* test_index;
+	int counter=0;
+	int read;
+	
+	stream=(char*)malloc(sizeof(char)*nBytes);
+		
+	for (counter = 0; counter<linetotal(database) ; counter++){
+	
+		read= getline(&stream,&nBytes,database);
+		printf("%s\n",stream);		
+		i_create(&test_index, stream, counter + 1);
+			
+		//expose(test_index);
+	
+		insert(tree, test_index); 
+	
+		}
+
+		//rewind(database);
+	free(stream);
+
+return FUNCTION_OK;
+}
+
+
+
+
+
+
+
+
+
+
+
+

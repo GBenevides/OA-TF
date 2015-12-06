@@ -10,11 +10,10 @@
 
 #define PRIMARIO 		"data/indicelista.bt"
 
-int build_tree(FILE*, b_tree**);
+
 
 int main(int argc, char const *argv[]){
 	
-
 
 	int op=0, seek;
 
@@ -29,7 +28,7 @@ int main(int argc, char const *argv[]){
 	int aux;
 
 	char line[120];
-	char search[120];
+	char search[11];
 
 	list=fopen("data/data.txt","r+");
 
@@ -43,7 +42,6 @@ int main(int argc, char const *argv[]){
 	b_tree* tree;
 	btree_create(&tree);
 	build_tree(list,&tree);
-	printf("Abri E Criei\n");
 
 	while(op >= 0){
 
@@ -64,7 +62,7 @@ int main(int argc, char const *argv[]){
 			printf("\nNome: ");
 			//scanf("%s", line);
 			//getchar();
-			gets(line);
+			scanf("%s",line);
 			//getchar();
 			
 			if(strlen(line)<NAMEMAX){
@@ -94,9 +92,9 @@ int main(int argc, char const *argv[]){
 			//fclose(arq);
 			//system("pause");
 			prim_build(list,in,&test_index);
-			expose(test_index);
+			printf("nome %s\n",test_index->key);
 			rewind(list);
-			system("pause");
+			//system("pause");
 			//i_create(&test_index, stream, counter + 1);
 			insert(&tree, test_index);
 
@@ -107,7 +105,7 @@ int main(int argc, char const *argv[]){
 			//Procurar registro
 			printf("Digite o registro a ser procurado (matricula+4 primeiras letras do nome).\n");
 			getchar();
-			gets(search);
+			scanf("%s",search);
 			seek = key_seek(tree, search);
 			switch (seek){
 
@@ -155,29 +153,4 @@ int main(int argc, char const *argv[]){
 }
 
 
-int build_tree(FILE* database, b_tree** tree){
 
-
-	char stream[130];
-	i_primario* test_index;
-
-	int counter;
-
-		
-	for (counter = 0; counter < 45 ; counter++){
-
-		if (feof(database))
-			break;
-
-		fgets(stream, 120, database);
-		
-		i_create(&test_index, stream, counter + 1);
-			
-		//expose(test_index);
-	
-		insert(tree, test_index); 
-
-		}
-		rewind(database);
-		return FUNCTION_OK;
-}
