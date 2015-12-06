@@ -15,7 +15,7 @@
 #define M_SIZE 	7
 	//Essential Macros
 
-#define LINEMAX 	42
+
 #define CURSOMAX 	4
 #define TAMCURSO 	3
 #define OP_OFFSET 	48
@@ -32,19 +32,16 @@ typedef struct indice_primario{
 
 	}i_primario;
 
+typedef struct data{
+	char matric[7];
+	char nome[LINEMAX];
+	int op;
+	char curso[CURSOMAX];
+	char turma;
 
+	struct data *next;
 
-typedef struct node {
-
-   short int i_counter;         	// Valor auxiliar indicando numero de chaves no no atual
-   short int leaf;					// Valor booleano indicando se o nó é uma folha (não possui filhos)
-
-   i_primario*	index[ORDEM-1]; 	// Vetor de ponteiros para indices primarios, as chaves.
-   struct node* branches[ORDEM];	// Ponteiros para os filhos da B-Tree
-   struct node* up;					// Ponteiros para o pai do nó
-
-   } b_tree;
-
+	}registro;
 
 
 
@@ -221,7 +218,7 @@ int reg_seek(FILE* stream, int target, registro** output){
 		int counter = 0;
 
 		if (target < 0)
-			return ERROR_TARGET;
+			return ERROR_STREAM;
 		else while (counter < target){
 			fgets(source_string, 120, stream);
 			counter++;
@@ -281,7 +278,7 @@ int seek_primario(char* chave , FILE* input){
 	rewind(input);
 
 	if(retorno == -1 || retorno > nLinhas)
-		return ERROR_TARGET;
+		return ERROR_STREAM;
 
 	return retorno;
 

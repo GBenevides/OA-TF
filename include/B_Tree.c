@@ -3,7 +3,7 @@
 
 typedef int dado;
 #define ORDEM 4
-#define t (ORDEM/2)		// t-1 ----->  2t-1   t = 2
+#define DIVISOR (ORDEM/2)		// t-1 ----->  2t-1   t = 2
 #define FUNCTION_OK 0
 #define KEYSIZE1	50
 
@@ -33,9 +33,10 @@ typedef struct node {
 int btree_create(b_tree ** node){
 
 	b_tree* aux;
-	(aux) =(b_tree*) malloc(sizeof(node));
+	(aux) =(b_tree*) malloc(sizeof(b_tree));
 	aux->counter = 0;
 	int i;
+
 	for(i=0; i< ORDEM; i++)
 		aux->branches[i] = NULL;
 	aux->leaf = 1;
@@ -69,18 +70,18 @@ b_tree* splitting(b_tree** x, int i, b_tree** y){
 
 	z->leaf = (*y)->leaf;
 
-	z->counter = (t-1);
+	z->counter = (DIVISOR-1);
 
 	int j;
 
-	for(j = 1; j < (t-1) ; j++)
-		z->keys[j] = (*y)->keys[j+t];
+	for(j = 1; j < (DIVISOR-1) ; j++)
+		z->keys[j] = (*y)->keys[j+DIVISOR];
 	if (((*y)->leaf) == 0 ){
 
-		for(j = 1; j < t; j++)
-			z->branches[j] = (*y)->branches[j+t];
+		for(j = 1; j < DIVISOR; j++)
+			z->branches[j] = (*y)->branches[j+DIVISOR];
 	}
-	(*y)->counter = t-1;
+	(*y)->counter = DIVISOR-1;
 	
 	for(j = (*x)->counter+1; j > i+1 ; j--)
 		(*x)->branches[j+1] = (*x)->branches[j];
@@ -89,7 +90,7 @@ b_tree* splitting(b_tree** x, int i, b_tree** y){
 	for(j = (*x)->counter; j > i; j--)
 		(*x)->keys[j+1] = (*x)->keys[j];
 
-	(*x)->keys[i] = (*y)->keys[t];
+	(*x)->keys[i] = (*y)->keys[DIVISOR];
 	(*x)->counter++;
 
 	return (*x);
@@ -100,7 +101,7 @@ int insert (b_tree** root ,  i_primario* k ){	//k is the insertion_key
 
 	b_tree *r = (*root);
 
-	if(r->counter = (2*t-1)){
+	if(r->counter = (2*DIVISOR-1)){
 
 		b_tree* s = (b_tree*) malloc(sizeof(b_tree));
 		
@@ -134,7 +135,7 @@ int insert_nonfull(b_tree** root, i_primario* k){
 			i--;
 
 		i++;
-		if((*root)->branches[i]->counter == (2*t-1)){
+		if((*root)->branches[i]->counter == (2*DIVISOR-1)){
 			splitting(root, i, &((*root)->branches[i]) );
 			if( k > (*root)->keys[i])
 				i++;
@@ -148,7 +149,10 @@ int insert_nonfull(b_tree** root, i_primario* k){
 
 int main(int argc, char const *argv[])
 {
-	printf("Aqui faremos testes e mais testes... Infinitos testes! Muahahahahahha\n");
+	b_tree* tree;
+	btree_create(&tree);
+	free(tree);
+	printf("Ui\n");
 	return 0;
 }
 
