@@ -10,7 +10,7 @@
 
 #define PRIMARIO 		"data/indicelista.bt"
 
-
+// OROROROROROR
 
 int main(int argc, char const *argv[]){
 	
