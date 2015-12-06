@@ -61,3 +61,5 @@ int reg_push( registro* , FILE* );
 		A função, então, processa os dados recebidos e os organiza em uma string, que é então escrita
 		no arquivo final.
 	*/
+
+int prim_build(FILE* , registro*, i_primario** );

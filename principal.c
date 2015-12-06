@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]){
 	
 
 
-	int op=0;;
+	int op=0, seek;
 
 	FILE *prim, *list, *saida;
 
@@ -29,6 +29,7 @@ int main(int argc, char const *argv[]){
 	int aux;
 
 	char line[120];
+	char search[120];
 
 	list=fopen("data/data.txt","r+");
 
@@ -102,16 +103,30 @@ int main(int argc, char const *argv[]){
 			printf("Fim da insercao\n");
 		}
 
-		else if((op==2))
+		else if((op==2)){
 			//Procurar registro
-			printf("Opcao indisponivel.\n");
+			printf("Digite o registro a ser procurado (matricula+4 primeiras letras do nome).\n");
+			getchar();
+			gets(search);
+			seek = key_seek(tree, search);
+			switch (seek){
 
-		else
+				case ERROR_DATA:
+						printf("Chave não encontrada.\n");
+						break;
+				case ERROR_STREAM:
+						printf("Erro do tipo Bad Input;\n");
+						break;
+				default:
+					printf("Registro Encontrado!Na linha %d do arquivo original.\n", seek );
+
+
+
+			}
+
+
+		}else
 			op = -1;
-
-
-
-		// Atualizacao dos arquivos!
 
 		
 
@@ -119,8 +134,8 @@ int main(int argc, char const *argv[]){
 		rewind(list);
 		//gera_primario(prim,&reg);    //  <-------------Agora gera_primario organiza os indices por arvores-b, essa funcao se chamara terminal_saida(prim, &reg);
 		rewind(list);
-		system("cls");
-		printf("Arvore B:\n\n\n");
+		//system("cls");
+		//printf("Arvore B:\n\n\n");
 		tree_run_space(tree, 0);
 
 	

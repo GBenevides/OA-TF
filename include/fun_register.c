@@ -76,7 +76,7 @@ int linetotal(FILE* stream){
 int reg_build(char* stream, registro** output){
 
 	
-	printf("Registro: %s\n", stream );
+	//printf("Registro: %s\n", stream );
 	int counter = 0;
 	char* field;
 	char op[3];
