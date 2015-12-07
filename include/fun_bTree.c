@@ -357,7 +357,6 @@ int tree_burn(b_tree** target){
 }
 
 
-
 int btree_create(b_tree ** node){
 
 	b_tree* aux;
@@ -383,8 +382,6 @@ int btree_create(b_tree ** node){
 	(*node)=aux;	// Passamos o conteudo de aux para node.
 	return FUNCTION_OK;
 }
-
-
 
 int tree_run_space(b_tree* target, int offset){
 	short int counter;
@@ -428,22 +425,23 @@ int build_tree(FILE* database, b_tree** tree){
 	i_primario* test_index;
 	int counter=0;
 	int read;
-	
+	int lines=linetotal(database);
 	stream=(char*)malloc(sizeof(char)*nBytes);
-		
-	for (counter = 0; counter<linetotal(database) ; counter++){
-	
-		read= getline(&stream,&nBytes,database);
-		printf("%s\n",stream);		
-		i_create(&test_index, stream, counter + 1);
-			
-		//expose(test_index);
-	
-		insert(tree, test_index); 
-	
-		}
 
-		//rewind(database);
+
+	for (counter = 0; counter < lines; counter++){
+
+		if (feof(database))
+			break;
+
+		fgets(stream, LINEMAX, database);
+		i_create(&test_index, stream, counter + 1);
+		//expose(test_index);
+
+		insert((tree), test_index); 
+
+		}
+	rewind(database);
 	free(stream);
 
 return FUNCTION_OK;

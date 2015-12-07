@@ -185,7 +185,7 @@ int gera_primario(FILE* output, registro** reg){
 
 	registro* p;
 	int counter=0, caux;
-	char chave[KEYSIZE1];
+	char chave[11];
 	i_primario* ind;
 
 	ind = (i_primario*) malloc(sizeof(i_primario));
@@ -196,7 +196,7 @@ int gera_primario(FILE* output, registro** reg){
 
 			for (caux = 0; caux < 9; caux++)
 				chave[caux+6] = p->nome[caux];
-			chave[15] = '\0';
+			chave[10] = '\0';
 			//strcat(chave,p->nome);
 			//strcat(chave,'\0');
 			strcpy(ind->key, chave);
@@ -215,12 +215,12 @@ int prim_build(FILE* ptr, registro*reg, i_primario** out){
 			int caux;
 			rewind(ptr);
 			int lines=linetotal(ptr);
-			char chave[16];
+			char chave[11];
 			strcpy(chave,reg->matric);
 
 			for (caux = 0; caux < 9; caux++)
 				chave[caux+6] = reg->nome[caux];
-			chave[15] = '\0';
+			chave[10] = '\0';
 			//strcat(chave,p->nome);
 			//strcat(chave,'\0');
 			strcpy((*out)->key, chave);

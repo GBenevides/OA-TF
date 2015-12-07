@@ -10,7 +10,8 @@
 
 #define PRIMARIO 		"data/indicelista.bt"
 
-// OROROROROROR
+
+// Chega um momento na vida de um homem onde ele tem que balançar o esqueleto até morrer.
 
 int main(int argc, char const *argv[]){
 	
@@ -31,7 +32,7 @@ int main(int argc, char const *argv[]){
 	char search[11];
 
 	list=fopen("data/data.txt","r+");
-
+	rewind(list);
 	prim=fopen("data/indicelista.bt","w+");
 	
 	if(list == NULL || prim == NULL ){
@@ -62,8 +63,8 @@ int main(int argc, char const *argv[]){
 			printf("\nNome: ");
 			//scanf("%s", line);
 			//getchar();
-			scanf("%s",line);
-			//getchar();
+			gets(line);
+			getchar();
 			
 			if(strlen(line)<NAMEMAX){
 				do{
@@ -71,11 +72,14 @@ int main(int argc, char const *argv[]){
 				}while(strlen(line)<NAMEMAX + 1);
 			} 
 			strcpy(in->nome,line);
+			
+
 			printf("\nOption: ");
 			scanf("%s", line);
 			getchar();
 			aux = atoi(line);
 			in->op = aux;
+
 			printf("\nCurso: ");
 			scanf("%s",line);
 			getchar();
@@ -127,10 +131,12 @@ int main(int argc, char const *argv[]){
 			op = -1;
 
 		
-
+		tree_burn(&tree);
+		btree_create(&tree);
+		rewind(list);	
+		build_tree(list,&tree);
 		reg_buildall(list, &reg);
-		rewind(list);
-		//gera_primario(prim,&reg);    //  <-------------Agora gera_primario organiza os indices por arvores-b, essa funcao se chamara terminal_saida(prim, &reg);
+		gera_primario(prim,&reg);    
 		rewind(list);
 		//system("cls");
 		//printf("Arvore B:\n\n\n");
