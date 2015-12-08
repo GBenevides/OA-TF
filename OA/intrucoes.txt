@@ -1,0 +1,39 @@
+﻿
+	Trabalho 2 de Organização de Arquivos
+	Gabriel Benevides - 14/0139907
+	Rafael Batista	- 14/0159355
+	Thales Grilo - 14/0163603
+
+
+	Nesse trabalho implementamos a estrutura de dados árvores-B para usarmos-a
+	ao longo do processamento. Foram implementadas opções para inserção e busca
+	de registros usando a arvore-b. 
+
+	A árvore é montada ao fim de cada iteração novamente para contemplar possíveis registros
+	adicionados.
+
+	O projeto foi modularizado na seguinte forma:
+		-fun_register.c e .h:
+			Contém o código das funções que lidam com registros, como criação de indices
+			primários, busca de registros, inserção de listas, etc...
+			Contém definições de structs para registros, indices, etc...
+
+		-fun_bTree.c e .h:
+			Contém as funções que contemplam a estruturas de dados árvores-b em si. 
+			Também contém as definições das structs da arvore e etc...
+
+		-principal.c:
+			É a parte que dá vida ao trabalho. Há um menu que pede a opção do usuário e imprime a árvore na tela.
+			Ao fim gera-se o arquivo de indices primários e salvamos-o em "indicelista.bt"
+		-fun_errocodes.h
+			Contém macros e defines básicos a serem usados para o retorno de funções.
+
+Observações importantes:
+
+	1-	A abertura da lista se dá da seguinte forma:
+		list=fopen("data/lista.txt","r+");
+		Isso significa que lista deve existir antes da execução do programa na pasta data, que foi enviada no mesmo diretório do programa.
+
+	2- Para execução do programa basta execução do arquivo principal.c Os outros módulos serão compilados juntos dele.
+
+	3-Os arquivos a serem lidos, bem como o arquivo de indices gerado será salvo na pasta data.
